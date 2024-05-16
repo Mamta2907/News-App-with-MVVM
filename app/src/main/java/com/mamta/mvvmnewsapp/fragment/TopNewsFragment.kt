@@ -21,5 +21,6 @@ class TopNewsFragment : Fragment() {
         //I am testing git branch feature just
     }
 
+    //Now this line is added in main branch
 
 }
