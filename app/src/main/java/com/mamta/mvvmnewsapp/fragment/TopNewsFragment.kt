@@ -19,6 +19,7 @@ class TopNewsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_top_news, container, false)
 
         //I am testing git branch feature just
+        //This is not in main branch now I am pushing this line feature branch
     }
 
     //Now this line is added in main branch
