@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MvvmNewsApp</string>
+
+
+    <string name="API_KEY">49f2e42c782147fca18fab3c4c9f6693</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
