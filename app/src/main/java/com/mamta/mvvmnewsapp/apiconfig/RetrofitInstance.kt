@@ -9,6 +9,7 @@ object RetrofitInstance {
     //private const val BASE_URL = "https://rndtd.com/demos/wealth-build/api/"
     private const val BASE_URL = "https://newsapi.org/v2/"
 
+
     val gson = GsonBuilder().setLenient().create()
 
     private val retrofit by lazy {
