@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        loadFragment(NewsFragment())
         binding.bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.news -> {
@@ -31,7 +32,6 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
 
     }
 

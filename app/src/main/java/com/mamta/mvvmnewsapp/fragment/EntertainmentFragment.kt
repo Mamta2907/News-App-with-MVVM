@@ -11,20 +11,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mamta.mvvmnewsapp.R
 import com.mamta.mvvmnewsapp.adapter.CategoryNewsAdapter
-import com.mamta.mvvmnewsapp.databinding.FragmentScienceBinding
-import com.mamta.mvvmnewsapp.databinding.FragmentSportNewsBinding
+import com.mamta.mvvmnewsapp.databinding.FragmentEntertainmentBinding
 import com.mamta.mvvmnewsapp.databinding.FragmentTechnologyBinding
-import com.mamta.mvvmnewsapp.viewmodel.SportNewsViewModel
+import com.mamta.mvvmnewsapp.viewmodel.BusinessViewModel
+import com.mamta.mvvmnewsapp.viewmodel.EntertainmentNewsViewModel
 
 
-class SportNewsFragment : Fragment() {
+class EntertainmentFragment : Fragment() {
 
-    private var _binding: FragmentSportNewsBinding? = null
+    private var _binding: FragmentEntertainmentBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var categoryNewsAdapter: CategoryNewsAdapter
-    private lateinit var sportNewsViewModel:SportNewsViewModel
-
+    private lateinit var entertainmentNewsViewModel: EntertainmentNewsViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,26 +38,27 @@ class SportNewsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentSportNewsBinding.inflate(inflater, container, false)
+        _binding = FragmentEntertainmentBinding.inflate(inflater, container, false)
 
         binding.rvTopNews.layoutManager = LinearLayoutManager(requireContext())
 
-        sportNewsViewModel = ViewModelProvider(requireActivity())[SportNewsViewModel::class.java]
+        entertainmentNewsViewModel =
+            ViewModelProvider(requireActivity())[EntertainmentNewsViewModel::class.java]
+        entertainmentNewsViewModel.getBusinessData()
 
-        sportNewsViewModel.getSportNews()
+        entertainmentNewsViewModel.observerEntertainmentLiveData()
+            .observe(requireActivity(), Observer {
+                categoryNewsAdapter = CategoryNewsAdapter(requireContext(), it)
 
-        sportNewsViewModel.observeSportNewsLiveData().observe(requireActivity(), Observer {
-            categoryNewsAdapter = CategoryNewsAdapter(requireContext(),it)
+                binding.rvTopNews.adapter = categoryNewsAdapter
+            })
 
-            binding.rvTopNews.adapter = categoryNewsAdapter
+        entertainmentNewsViewModel.errorLiveData().observe(requireActivity(), Observer {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         })
-
-        sportNewsViewModel.observeErrorLiveData().observe(viewLifecycleOwner, Observer {
-            Toast.makeText(requireContext(),it,Toast.LENGTH_SHORT).show()
-        })
-
 
         return binding.root
     }
+
 
 }

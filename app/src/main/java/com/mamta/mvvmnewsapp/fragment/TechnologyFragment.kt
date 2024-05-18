@@ -12,20 +12,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mamta.mvvmnewsapp.R
 import com.mamta.mvvmnewsapp.adapter.CategoryNewsAdapter
 import com.mamta.mvvmnewsapp.databinding.FragmentScienceBinding
-import com.mamta.mvvmnewsapp.databinding.FragmentSportNewsBinding
 import com.mamta.mvvmnewsapp.databinding.FragmentTechnologyBinding
-import com.mamta.mvvmnewsapp.viewmodel.SportNewsViewModel
+import com.mamta.mvvmnewsapp.viewmodel.TechnologyViewModel
 
 
-class SportNewsFragment : Fragment() {
+class TechnologyFragment : Fragment() {
 
-    private var _binding: FragmentSportNewsBinding? = null
+    private var _binding: FragmentTechnologyBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var categoryNewsAdapter: CategoryNewsAdapter
-    private lateinit var sportNewsViewModel:SportNewsViewModel
-
-
+    private lateinit var technologyViewModel: TechnologyViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,27 +35,25 @@ class SportNewsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentSportNewsBinding.inflate(inflater, container, false)
+        _binding = FragmentTechnologyBinding.inflate(inflater, container, false)
 
         binding.rvTopNews.layoutManager = LinearLayoutManager(requireContext())
 
-        sportNewsViewModel = ViewModelProvider(requireActivity())[SportNewsViewModel::class.java]
+        technologyViewModel = ViewModelProvider(requireActivity())[TechnologyViewModel::class.java]
 
-        sportNewsViewModel.getSportNews()
+        technologyViewModel.getTechnologyNews()
 
-        sportNewsViewModel.observeSportNewsLiveData().observe(requireActivity(), Observer {
+        technologyViewModel.getObserveTechnologyLiveData().observe(requireActivity(), Observer {
             categoryNewsAdapter = CategoryNewsAdapter(requireContext(),it)
-
             binding.rvTopNews.adapter = categoryNewsAdapter
         })
 
-        sportNewsViewModel.observeErrorLiveData().observe(viewLifecycleOwner, Observer {
-            Toast.makeText(requireContext(),it,Toast.LENGTH_SHORT).show()
+        technologyViewModel.getObserveErrorLiveData().observe(requireActivity(), Observer {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         })
-
 
         return binding.root
     }
+
 
 }

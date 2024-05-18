@@ -25,7 +25,12 @@ class NewsFragment : Fragment() {
 
         adapter = ViewPagerAdapter(requireActivity())
         adapter.addFragment(TopNewsFragment(), "Top News")
-        adapter.addFragment(SportNewsFragment(), "Sport News")
+        adapter.addFragment(SportNewsFragment(), "Sport")
+        adapter.addFragment(TechnologyFragment(),"Technology")
+        adapter.addFragment(BussinessFragment(),"Business")
+        adapter.addFragment(EntertainmentFragment(),"Entertainment")
+        adapter.addFragment(HealthFragment(),"Health")
+        adapter.addFragment(ScienceFragment(),"Science")
 
         binding.pager.adapter = adapter
 

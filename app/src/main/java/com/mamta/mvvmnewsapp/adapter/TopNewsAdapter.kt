@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mamta.mvvmnewsapp.databinding.ItmeNewsHeadlinesBinding
 import com.mamta.mvvmnewsapp.model.Article
+import com.squareup.picasso.Picasso
 
 class TopNewsAdapter(private var context: Context, private var list: List<Article>):RecyclerView.Adapter<TopNewsAdapter.ViewHolder>() {
 
@@ -17,11 +18,12 @@ class TopNewsAdapter(private var context: Context, private var list: List<Articl
     }*/
 
 
-    inner class ViewHolder(val binding: ItmeNewsHeadlinesBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(private val binding: ItmeNewsHeadlinesBinding) : RecyclerView.ViewHolder(binding.root){
 
             fun bind(newsData:Article){
                 binding.tvNewsHeading.text = newsData.title
-                binding.tvNewsDescription.text = newsData.description
+                //binding.tvNewsDescription.text = newsData.description
+                Picasso.get().load(newsData.urlToImage).into(binding.imgTopNews)
             }
         }
 

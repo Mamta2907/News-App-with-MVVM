@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/news"
         android:icon="@drawable/baseline_newspaper_24"
+        app:showAsAction="always|withText"
         android:title="News"
         />
 
     <item android:id="@+id/profile"
         android:icon="@drawable/baseline_person_outline_24"
-        android:title="Profile"/>
+        android:title="Profile"
+        app:showAsAction="always|withText"/>
 
 </menu>
