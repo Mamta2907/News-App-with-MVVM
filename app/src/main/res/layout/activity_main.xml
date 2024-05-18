@@ -11,7 +11,7 @@
         android:id="@+id/toolbarMain"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/material_dynamic_secondary0"
+        android:background="@color/primary_color"
         app:title="News App"
         app:titleCentered="true"
         app:titleTextColor="@color/white" />
