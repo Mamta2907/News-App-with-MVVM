@@ -30,7 +30,8 @@
         android:minHeight="?attr/actionBarSize"
         app:tabTextColor="@color/primary_color"
         app:tabIndicatorColor="@color/secondry_color"
-        app:tabIndicatorFullWidth="true"
+        app:tabIndicatorFullWidth="false"
+        app:tabMode="scrollable"
         />
 
     <androidx.viewpager2.widget.ViewPager2

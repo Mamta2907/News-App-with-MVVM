@@ -41,12 +41,12 @@
                 android:layout_marginHorizontal="8dp"
                 />
 
-         <!--   <TextView
-                android:id="@+id/tvNewsDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="News Heading short description but it is to short description"/>
--->
+            <!--   <TextView
+                   android:id="@+id/tvNewsDescription"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   tools:text="News Heading short description but it is to short description"/>
+   -->
         </LinearLayout>
 
     </LinearLayout>
